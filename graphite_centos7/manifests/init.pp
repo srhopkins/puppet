@@ -68,4 +68,5 @@ class graphite_centos7 {
     provider => "pip",
     require  => Package[$packages],
   }
+
 }
