@@ -62,6 +62,5 @@ class graphite_centos7 {
     ensure   => "installed",
     provider => "pip",
     require  => Package[$packages],
-	}
-
+  }
 }
