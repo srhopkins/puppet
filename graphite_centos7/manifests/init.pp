@@ -60,9 +60,9 @@ class graphite_centos7 {
 	"graphite-web",
 	"carbon", ]
 	package { $pip_packages:
-			ensure   => "installed",
-			provider => "pip",
-			require  => Package[$packages],
+    ensure   => "installed",
+    provider => "pip",
+    require  => Package[$packages],
 	}
 
 }
