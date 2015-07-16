@@ -36,8 +36,10 @@
 # Copyright 2015 Your name here, unless otherwise noted.
 #
 class graphite_centos7 {
+
+  package { "epel-release": ensure => "installed", }
+
   $packages = [
-    "epel-release",
     "python-pip",
     "httpd",
     "net-snmp",
@@ -48,7 +50,10 @@ class graphite_centos7 {
     "git",
     "gcc-c++",
     "npm", ]
-  package { $packages: ensure => "installed", }
+  package { $packages:
+    ensure  => "installed",
+    require => Package["epel-release"],
+  }
   
   $pip_packages = [
     "https://github.com/graphite-project/ceres/tarball/master",
