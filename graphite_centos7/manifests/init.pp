@@ -74,4 +74,9 @@ class graphite_centos7 {
     source => "puppet:///modules/graphite_centos7/example-graphite-vhost.conf",
   }
 
+  file { "/opt/graphite/conf":
+    source  => "puppet:///modules/graphite_centos7/conf",
+    recurse => true,
+  }
+
 }
