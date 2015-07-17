@@ -35,6 +35,8 @@
 #
 # Copyright 2015 Your name here, unless otherwise noted.
 #
+include graphite_centos7::centos7
+
 class graphite_centos7 {
 
   package { "epel-release": ensure => "installed", }
@@ -67,6 +69,10 @@ class graphite_centos7 {
     ensure   => "installed",
     provider => "pip",
     require  => Package[$packages],
+  }
+  
+  file { "/etc/httpd/conf.d/graphite.conf":
+    source => "puppet:///modules/graphite_centos7/example-graphite-vhost.conf",
   }
 
 }
