@@ -71,12 +71,14 @@ class graphite_centos7 {
   }
   
   file { "/etc/httpd/conf.d/graphite.conf":
-    source => "puppet:///modules/graphite_centos7/example-graphite-vhost.conf",
+    source  => "puppet:///modules/graphite_centos7/example-graphite-vhost.conf",
+    require => Package[$pip_packages],
   }
 
   file { "/opt/graphite/conf":
     source  => "puppet:///modules/graphite_centos7/conf",
     recurse => true,
+    require => Package[$pip_packages],
   }
 
 }
