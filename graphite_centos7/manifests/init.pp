@@ -35,7 +35,6 @@
 #
 # Copyright 2015 Your name here, unless otherwise noted.
 #
-include graphite_centos7::centos7
 
 class graphite_centos7 {
 
