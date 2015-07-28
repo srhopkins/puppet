@@ -73,13 +73,13 @@ class graphite inherits graphite::params {
     require => Package[$pip_packages],
   }
 
-   file { "/opt/graphite/storage/":
-     ensure  => directory,
-     recurse => true,
-     owner   => "apache",
-     group   => "apache",
-     mode    => 0755,
-     require => Package[$pip_packages],
-   }
+  file { "/opt/graphite/storage/":
+    ensure  => directory,
+    recurse => true,
+    owner   => "apache",
+    group   => "apache",
+    mode    => 0755,
+    require => Package[$pip_packages],
+  }
 
 }
