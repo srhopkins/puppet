@@ -2,7 +2,7 @@ class graphite::params {
 
   case $::operatingsystem {
 
-    centos: {
+    "centos": {
       case $::operatingsystemrelease {
         /^7\.\d+/: {
           $packages = [
@@ -28,12 +28,13 @@ class graphite::params {
         }
 
         default: {
-          fail("Unsupported RedHat release: '${::operatingsystemrelease}'")
+          fail("Unsupported RedHat release: ${::operatingsystemrelease}")
         }
+      }
     }
 
     default: {
-      fail("Module ${module_name} is not supported on ${::operatingsystem}"
+      fail("Module ${module_name} is not supported on ${::operatingsystem}")
       }
     }
 

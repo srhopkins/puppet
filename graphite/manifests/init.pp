@@ -51,7 +51,7 @@ class graphite {
   file { '/usr/bin/pip-python':
     ensure  => 'link',
     target  => '/usr/bin/pip',
-    onlyif  => 'test ! -f /usr/bin/pip-python'
+    onlyif  => 'test ! -f /usr/bin/pip-python',
     require => Package[$packages],
   }
 
