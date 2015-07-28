@@ -51,7 +51,7 @@ class graphite inherits graphite::params {
   file { '/usr/bin/pip-python':
     ensure  => 'link',
     target  => '/usr/bin/pip',
-    replace => false
+    replace => false,
     require => Package[$packages],
   }
 
