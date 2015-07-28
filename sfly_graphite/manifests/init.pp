@@ -36,7 +36,7 @@
 # Copyright 2015 Your name here, unless otherwise noted.
 #
 
-class graphite_centos7 {
+class sfly_graphite {
 
   package { "epel-release": ensure => "installed", }
 
