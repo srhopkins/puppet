@@ -40,17 +40,7 @@ class graphite {
 
   package { "epel-release": ensure => "installed", }
 
-  $packages = [
-    "python-pip",
-    "httpd",
-    "net-snmp",
-    "perl",
-    "pycairo",
-    "mod_wsgi",
-    "python-devel",
-    "git",
-    "gcc-c++",
-    "npm", ]
+  $packages = $graphite::params::packages
   package { $packages:
     ensure  => "installed",
     require => Package["epel-release"],
@@ -65,14 +55,7 @@ class graphite {
     require => Package[$packages],
   }
 
-  $pip_packages = [
-    "https://github.com/graphite-project/ceres/tarball/master",
-    "django<1.6",
-    "Twisted<12",
-    "django-tagging==0.3.6",
-    "whisper",
-    "graphite-web",
-    "carbon", ]
+  $pip_packages = $graphite::params::pip_packages
   package { $pip_packages:
     ensure   => "installed",
     provider => "pip",
