@@ -56,6 +56,15 @@ class graphite_centos7 {
     require => Package["epel-release"],
   }
   
+  # Issue with not finding pip command.
+  # https://github.com/evenup/evenup-curator/issues/24
+  file { '/usr/bin/pip-python':
+    ensure  => 'link',
+    target  => '/usr/bin/pip',
+    onlyif  => 'test ! -f /usr/bin/pip-python'
+    require => Package[$packages],
+  }
+
   $pip_packages = [
     "https://github.com/graphite-project/ceres/tarball/master",
     "django<1.6",
