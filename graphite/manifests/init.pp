@@ -36,7 +36,7 @@
 # Copyright 2015 Your name here, unless otherwise noted.
 #
 
-class graphite {
+class graphite inherits graphite::params {
 
   package { "epel-release": ensure => "installed", }
 
@@ -51,7 +51,7 @@ class graphite {
   file { '/usr/bin/pip-python':
     ensure  => 'link',
     target  => '/usr/bin/pip',
-    onlyif  => 'test ! -f /usr/bin/pip-python',
+    replace => false
     require => Package[$packages],
   }
 
@@ -63,12 +63,12 @@ class graphite {
   }
   
   file { "/etc/httpd/conf.d/graphite.conf":
-    source  => "puppet:///modules/graphite_centos7/example-graphite-vhost.conf",
+    source  => "puppet:///modules/graphite/example-graphite-vhost.conf",
     require => Package[$pip_packages],
   }
 
   file { "/opt/graphite/conf":
-    source  => "puppet:///modules/graphite_centos7/conf",
+    source  => "puppet:///modules/graphite/conf",
     recurse => true,
     require => Package[$pip_packages],
   }
